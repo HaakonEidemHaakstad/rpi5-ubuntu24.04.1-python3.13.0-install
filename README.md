@@ -12,12 +12,12 @@ This script should by itself include everything necessary for building Python 3.
 echo "deb-src http://archive.ubuntu.com/ubuntu jammy main" | sudo tee -a /etc/apt/sources.list 
 
 
-The ./configure options have been limited to --enable-optimizations. This is because including --with-lto led to failed tests and warnings, and including --disable-gil and --enable-experimental-jit (unfortunately, perhaps the most exciting new features of 3.13) caused crashes during compilation. 
+The ./configure options have been limited to --enable-optimizations and --enable-shared (allowing for script compilation). --with-lto led to failed tests and warnings, and including --disable-gil and --enable-experimental-jit (unfortunately, perhaps the most exciting new features of 3.13) caused crashes during compilation. 
 
 
 If you wish to try to build Python 3.13 with these options, add these options to the line including ./configure as such:
 
-./configure --enable-optimizations --with-lto --disable-gil --enable-experimental-jit
+./configure --enable-optimizations --enable-shared --with-lto --disable-gil --enable-experimental-jit
 
 
 Once the script has been run and the installation of Python 3.13 has successfully completed, the installation files (the .tgz file and the contents extracted from it) can be safely removed with the command:
